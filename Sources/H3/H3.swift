@@ -36,6 +36,21 @@ public struct H3 {
         return output
     }
 
+    public static func geoBoundary(for index: UInt64) -> [BoundaryCoord] {
+        var boundary = CellBoundary()
+        let err = CH3.cellToBoundary(index, &boundary)
+        precondition(err == 0, "cellToBoundary failed")
+
+        let coords = withUnsafeBytes(of: &boundary.verts) { raw -> [LatLng] in
+            let buffer = raw.bindMemory(to: LatLng.self)
+            return Array(buffer.prefix(Int(boundary.numVerts)))
+        }
+
+        return coords.map { coord in
+            BoundaryCoord(latitude: rad2deg(coord.lat), longitude: rad2deg(coord.lng))
+        }
+    }
+
     // MARK: - Private Helper Functions
 
     /// Converts degrees to radians.
@@ -48,4 +63,9 @@ public struct H3 {
     private static func rad2deg(_ radians: Double) -> Double {
         return radians * 180.0 / .pi
     }
+}
+
+public struct BoundaryCoord {
+    public let latitude: Double
+    public let longitude: Double
 }
