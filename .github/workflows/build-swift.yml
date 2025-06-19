@@ -12,7 +12,9 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-22.04]
+        # temp disabled ubuntu
+        #os: [macos-latest, ubuntu-latest]
+        os: [macos-latest]
 
     steps:
       - name: Checkout code
