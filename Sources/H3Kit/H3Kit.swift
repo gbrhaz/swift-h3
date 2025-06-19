@@ -5,7 +5,7 @@ import CH3
 extension CLLocationCoordinate2D {
     // Find the H3 cell index for a given set of 2D coordinates
     public func h3CellIndex( resolution: Int32 ) -> H3Index? {
-        var latLng = LatLng(lat: latitude, lon: longitude)
+        var latLng = LatLng(lat: latitude, lng: longitude)
         var h3index: H3Index = 0
 
         let error = latLngToCell(&latLng, resolution, &h3index)
