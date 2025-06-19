@@ -2,6 +2,7 @@
 #include "h3api.h"
 #include "polygon.h"
 #include "linkedGeo.h"
+#include <string.h>
 
 H3Error polyfillWithFlags(const LatLng* verts, int numVerts, int res, uint32_t flags, H3Index* out, int* outSize) {
     GeoLoop loop = { .numVerts = numVerts, .verts = (LatLng*)verts };
@@ -57,13 +58,13 @@ int cellsToPolygonFlat(const H3Index* cells, int numCells, LatLng* coords, int m
     }
 
 cleanup:
-    destroyLinkedPolygon(&polygon);
+    destroyLinkedMultiPolygon(&polygon);
     if (actualCount) *actualCount = count;
     return 0;
 }
 
 H3Error destroyPolygonWrapper(LinkedGeoPolygon* polygon) {
-    _destroyLinkedPolygon(polygon);
+    destroyLinkedMultiPolygon(polygon);
     return 0;
 }
 
