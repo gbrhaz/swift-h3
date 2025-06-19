@@ -95,8 +95,3 @@ public func uncompactCellsSize(compacted: [UInt64], resolution: Int) -> Int {
     
     return Int(size)
 }
-
-
-
-
-
