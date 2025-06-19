@@ -17,8 +17,10 @@ jobs:
         os: [macos-latest]
 
     steps:
-      - name: Checkout code
+      - name: Checkout code (with submodules)
         uses: actions/checkout@v3
+        with:
+          submodules: true
 
       - name: Set up Swift
         uses: swift-actions/setup-swift@v1
