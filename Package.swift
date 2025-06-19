@@ -15,7 +15,8 @@ let package = Package(
         ),
         .target(
             name: "H3Kit",
-            dependencies: ["CH3"]
+            dependencies: ["CH3"],
+            path: "Sources/H3Kit"
         )
     ]
 )
