@@ -4,9 +4,9 @@ public struct H3 {
     /// Converts a latitude/longitude (in degrees) to an H3 cell index at the given resolution.
     public static func latLngToCell(latitude: Double, longitude: Double, resolution: Int) -> UInt64 {
         // Prepare coordinates in radians for the H3 C function
-        var coords = LatLng(lat: deg2rad(latitude), lng: deg2rad(longitude))
+        var coords = CH3.LatLng(lat: deg2rad(latitude), lng: deg2rad(longitude))
         var index: H3Index = 0
-        let error = latLngToCell(&coords, Int32(resolution), &index)
+        let error = CH3.latLngToCell(&coords, Int32(resolution), &index)
         precondition(error == 0, "latLngToCell failed with error code \(error)")
         return index  // Return the 64-bit H3 index
     }
@@ -14,7 +14,7 @@ public struct H3 {
     /// Converts an H3 cell index to the latitude/longitude (in degrees) of the cell center.
     public static func cellToLatLng(cell: UInt64) -> (latitude: Double, longitude: Double) {
         var coords = LatLng(lat: 0, lng: 0)
-        let error = cellToLatLng(cell, &coords)
+        let error = CH3.cellToLatLng(cell, &coords)
         precondition(error == 0, "cellToLatLng failed with error code \(error)")
         // Convert radians back to degrees for the result
         let latDeg = rad2deg(coords.lat)
