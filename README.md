@@ -17,6 +17,9 @@ This package provides native Swift access to core H3 functionality by wrapping t
 - [x] Miscellaneous
 ---
 
+## TODO
+- Unit tests
+
 ## Installation
 
 ### Swift Package Manager
@@ -27,7 +30,7 @@ Add this to your `Package.swift`:
 .package(url: "https://github.com/JeremyEspresso/swift-h3.git", from: "1.0.0")
 ```
 
-## 🔨 Development
+## Development
 
 This package wraps the H3 C library via submodule.
 
