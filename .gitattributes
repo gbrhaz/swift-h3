@@ -1,5 +1,6 @@
 * text=auto
 
-Sources/CH3/h3/* linguist-vendored
+Sources/CH3/h3/** linguist-vendored
+Sources/CH3/include/h3api.h linguist-vendored
 
 *.swift linguist-language=Swift
