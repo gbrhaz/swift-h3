@@ -12,9 +12,9 @@ This package provides native Swift access to core H3 functionality by wrapping t
 - [x] Traversal API
 - [x] Hierarchy API
 - [x] Regions API
-- [ ] Directed edges API
-- [ ] Vertexes API
-- [ ] Miscellaneous
+- [x] Directed edges API
+- [x] Vertexes API
+- [x] Miscellaneous
 ---
 
 ## Installation
