@@ -26,7 +26,12 @@ public func cellToBoundary(cell: UInt64) -> [CH3.LatLng] {
     
     let coords = withUnsafeBytes(of: &boundary.verts) { raw -> [LatLng] in
         let buffer = raw.bindMemory(to: LatLng.self)
-        return Array(buffer.prefix(Int(boundary.numVerts)))
+        var result = Array(buffer.prefix(Int(boundary.numVerts)))
+        for (i, latlng) in result.enumerated() {
+            result[i].lat = radsToDegs(latlng.lat)
+            result[i].lng = radsToDegs(latlng.lng)
+        }
+        return result
     }
 
     return coords
