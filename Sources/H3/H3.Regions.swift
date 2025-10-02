@@ -1,8 +1,7 @@
 import CH3
-import CoreLocation
 
 public func polygonToCells(
-    boundary: [CLLocationCoordinate2D],
+    boundary: [Coordinate],
     resolution: Int,
     flags: UInt32
 ) throws -> [UInt64] {
@@ -40,7 +39,7 @@ public func polygonToCells(
 }
 
 public func maxPolygonToCellsSize(
-    boundary: [CLLocationCoordinate2D],
+    boundary: [Coordinate],
     resolution: Int,
     flags: UInt32
 ) throws -> Int {
@@ -61,7 +60,7 @@ public func maxPolygonToCellsSize(
 }
 
 public func polygonToCellsExperimental(
-    boundary: [CLLocationCoordinate2D],
+    boundary: [Coordinate],
     resolution: Int,
     containmentMode: PolygonContainment = .center
 ) throws -> [UInt64] {
